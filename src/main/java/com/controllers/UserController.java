@@ -2,7 +2,7 @@ package com.controllers;
 
 
 import com.entities.Customer;
-import com.hellokoding.account.service.SecurityService;
+import com.services.SecurityService;
 import com.hellokoding.account.service.CustomerService;
 import com.hellokoding.account.validator.CustomerValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class CustomerController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         if (error != null)
-            model.addAttribute("error", "Your Customername and password is invalid.");
+            model.addAttribute("error", "Your Customer name and password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
