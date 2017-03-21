@@ -2,9 +2,8 @@
 
 Accenture trading platform web application.
 
-### What is this repository for? ###
+* Quick summary *
 
-* Quick summary
 A trading application where a trader can perform the following actions:
 1) Register / Login / forgot password
 2) Perform new order - i.e. BUY or SELL stocks according to their account balance
