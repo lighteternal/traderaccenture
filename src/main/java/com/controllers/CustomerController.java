@@ -3,8 +3,8 @@ package com.controllers;
 
 import com.entities.Customer;
 import com.services.SecurityService;
-import com.hellokoding.account.service.CustomerService;
-import com.hellokoding.account.validator.CustomerValidator;
+import com.services.CustomerService;
+import com.validator.CustomerValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

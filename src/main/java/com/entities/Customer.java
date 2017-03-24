@@ -20,7 +20,7 @@ public class Customer implements Serializable {
 	private int customerID;
 
 	private String address;
-
+	
 
 	private String afm;
 
@@ -44,6 +44,7 @@ public class Customer implements Serializable {
 	private String occupation;
 
 	private String password;
+	private String passwordConfirm;
 
 	private int phone;
 
@@ -218,6 +219,16 @@ public class Customer implements Serializable {
 		portfolio.setCustomer(null);
 
 		return portfolio;
+	}
+
+	public String getCustomername() {
+		
+		return (this.firstName+this.lastName);
+	}
+
+	public String getPasswordConfirm() {
+		
+		return passwordConfirm;
 	}
 
 }
