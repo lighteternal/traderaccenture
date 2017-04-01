@@ -1,0 +1,14 @@
+.boxed {
+  border: 1px solid gray ;
+} 
+
+.navbar .login-btn {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+}
+
+#quantityForm {
+	visibility: hidden;
+	
+}
