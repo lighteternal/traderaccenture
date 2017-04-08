@@ -20,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import traderproject.model.Stock;
 import traderproject.service.StockService;
 
+
+
 @Controller
 public class StockController {
 

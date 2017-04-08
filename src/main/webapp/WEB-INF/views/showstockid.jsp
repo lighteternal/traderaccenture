@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
@@ -29,9 +29,12 @@
 			</div>
 
 
-
-			<button type="submit" class="btn btn-danger navbar-btn login-btn">Sign
-				In</button>
+			<form action="/logout" method="post">
+			
+			<button type="submit" class="btn btn-danger navbar-btn login-btn">Log out</button>
+			<input type="hidden" name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+            </form>
 
 		</div>
 	</nav>
