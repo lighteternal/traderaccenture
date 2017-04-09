@@ -21,21 +21,28 @@
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-
-			<div class="navbar-header">
-
-
-				<a href="#" class="navbar-brand">Accenture Trader</a>
-			</div>
-
-
-			<form action="/logout" method="post">
+		
+		
+			   <div class="navbar-header">
+				 <a href="#" class="navbar-brand">Accenture Trader</a>			
+			  </div>
 			
-			<button type="submit" class="btn btn-danger navbar-btn login-btn">Log out</button>
-			<input type="hidden" name="${_csrf.parameterName}"
-                       value="${_csrf.token}"/>
-            </form>
-
+			<div class="row row-list text-right">
+			    <div class="col-xs-8"> 
+				    <p class="text-right navbar-btn">
+						Welcome Back <b><c:out value="${pageContext.request.remoteUser}"/></b>
+					</p></div>
+			    <div class="col-xs-1 container-paragraph">
+			    	<form action="/logout" method="post">						
+						<button type="submit" class="btn btn-danger navbar-btn login-btn ">Log out</button>
+						<input type="hidden" name="${_csrf.parameterName}"
+									                       value="${_csrf.token}"/>
+					</form>
+				</div>
+			</div>  
+					        		
+			        		
+			
 		</div>
 	</nav>
 	<div class="btn-group btn-group-justified">

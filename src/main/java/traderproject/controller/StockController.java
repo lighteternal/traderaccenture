@@ -36,7 +36,7 @@ public class StockController {
 
 		return model;
 	}
-
+	
 	@GetMapping("/stocks/{stockID}")
 	public String showStockId(@PathVariable Integer stockID, HttpServletRequest request) {
 		request.setAttribute("stock", stockService.findOne(stockID));
