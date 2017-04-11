@@ -3,6 +3,10 @@ package traderproject.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
@@ -13,10 +17,13 @@ import java.util.List;
  * 
  */
 @Entity(name="Customers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "customerID")
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cust_seq_gen")
+//	@SequenceGenerator(name = "users_seq_gen", sequenceName = "cust_id_seq")
 	private int customerID;
 	private String address;
 	private String afm;
@@ -40,7 +47,7 @@ public class Customer implements Serializable {
 	private Account account;
 
 	//bi-directional many-to-one association to Portfolio
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer" )
 	private List<Portfolio> portfolios;
 
 	

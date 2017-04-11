@@ -3,6 +3,9 @@ package traderproject.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +15,14 @@ import java.util.List;
  * 
  */
 @Entity(name="Account")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "accountID")
 public class Account implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "acc_seq_gen")
+//	@SequenceGenerator(name = "acc_seq_gen", sequenceName = "acc_id_seq")
 	private int accountID;
 
 	private double acBalance;
@@ -27,12 +33,12 @@ public class Account implements Serializable {
 	private int customerID;
 
 	//bi-directional one-to-one association to Customer
-	@OneToOne
-	@JoinColumn(name="accountID")
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="accountID", nullable=true)
 	private Customer customer;
 
 	//bi-directional many-to-one association to Activity
-	@OneToMany(mappedBy="account")
+	@OneToMany(mappedBy="account", fetch=FetchType.EAGER)
 	private List<Activity> activities;
 
 	public Account() {

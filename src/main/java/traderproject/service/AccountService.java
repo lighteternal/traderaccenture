@@ -41,7 +41,7 @@ public class AccountService {
 		return accountRepo.findOne(accountID);
 	}
 	
-	public void updateStock(Integer accountID , Account account) {
+	public void updateAccount(Integer accountID , Account account) {
 		
 		accountRepo.save(account);
 	
