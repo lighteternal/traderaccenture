@@ -5,33 +5,40 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * The persistent class for the Activity database table.
  * 
  */
 @Entity(name="Activity")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "txID")
 public class Activity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int txID;
-	
+	@Column(name="txID")
+	private int txID;	
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern="yyyy-MM-dd")
+	@Column(name="creationDate")
 	private Date creationDate;
-
+	@Column(name="stockAmount")
 	private int stockAmount;
-
+	@Column(name="stockID")
 	private int stockID;
-
+	@Column(name="stockPrice")
 	private double stockPrice;
-
+	@Column(name="type")
 	private byte type;
-
 	//bi-directional many-to-one association to Account
-	@ManyToOne
-	@JoinColumn(name="accountID")
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="accountID", nullable=true)
 	private Account account;
 
 	public Activity() {
@@ -105,11 +112,11 @@ public class Activity implements Serializable {
 		this.account = account;
 	}
 
-	@Override
-	public String toString() {
-		return "Activity [txID=" + txID + ", creationDate=" + creationDate + ", stockAmount=" + stockAmount
-				+ ", stockID=" + stockID + ", stockPrice=" + stockPrice + ", type=" + type + ", account=" + account
-				+ "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Activity [txID=" + txID + ", creationDate=" + creationDate + ", stockAmount=" + stockAmount
+//				+ ", stockID=" + stockID + ", stockPrice=" + stockPrice + ", type=" + type + ", account=" + account
+//				+ "]";
+//	}
 
 }
