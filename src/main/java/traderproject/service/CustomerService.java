@@ -34,5 +34,10 @@ public class CustomerService {
 		customerRepo.delete(id);
 	}
 	
+	public Customer findOne(int customerId) {
+		return customerRepo.findOne(customerId);
+		
+	}
+	
 	
 }

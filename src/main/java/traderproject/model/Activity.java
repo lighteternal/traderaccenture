@@ -93,10 +93,10 @@ public class Activity implements Serializable {
 		this.account = account;
 	}
 
-	public Activity(int txID, Date creationDate, int stockAmount, int stockID, double stockPrice, byte type,
+	public Activity(Date creationDate, int stockAmount, int stockID, double stockPrice, byte type,
 			Account account) {
-		super();
-		this.txID = txID;
+		
+		
 		this.creationDate = creationDate;
 		this.stockAmount = stockAmount;
 		this.stockID = stockID;

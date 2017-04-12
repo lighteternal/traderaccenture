@@ -101,7 +101,7 @@ public class Account implements Serializable {
 	}
 
 	public Account(double acBalance, Date acDateCreated, int customerID, Customer customer, List<Activity> activities) {
-		super();
+		
 		this.acBalance = acBalance;
 		this.acDateCreated = acDateCreated;
 		this.customerID = customerID;

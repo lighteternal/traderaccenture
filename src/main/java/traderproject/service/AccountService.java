@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import traderproject.model.Account;
+import traderproject.model.Stock;
 import traderproject.repo.AccountRepo;
 
 @Service
@@ -14,12 +15,12 @@ import traderproject.repo.AccountRepo;
 public class AccountService {
 
 	private final AccountRepo accountRepo;
-	
+
 	public AccountService(AccountRepo accountRepo) {
 
 		this.accountRepo = accountRepo;
 	}
-	
+
 	public List<Account> findAll() {
 		List<Account> accounts = new ArrayList<>();
 		for (Account account : accountRepo.findAll()) {
@@ -36,15 +37,10 @@ public class AccountService {
 		accountRepo.delete(id);
 	}
 
-	public Account findOne(Integer accountID) {
+	public void updateAccount(Integer accountId, Account account) {
 
-		return accountRepo.findOne(accountID);
-	}
-	
-	public void updateStock(Integer accountID , Account account) {
-		
 		accountRepo.save(account);
-	
-}
+
+	}
 
 }
