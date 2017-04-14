@@ -16,7 +16,7 @@ public class CustomerController {
 	
 	@GetMapping("/")
 	public String home(){
-		return "index";
+		return "login";
 	}
 
 	
