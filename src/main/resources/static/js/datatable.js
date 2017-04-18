@@ -1,6 +1,6 @@
 $(document).ready( function () {
 	 var table = $('#activitiesTable').DataTable({
-		 "sAjaxSource": "/activ/{customerID}",
+		 "sAjaxSource": "/activities",
 			"sAjaxDataProp": "",
 			"order": [[ 0, "asc" ]],
 			"aoColumns": [
@@ -11,5 +11,6 @@ $(document).ready( function () {
 				  { "mData": "stockPrice" },
 				  { "mData": "type" }
 			]
+
 	 })
 });
