@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,12 +39,12 @@ public class StockController {
 	private AccountService accountService;
 
 	@RequestMapping(value = "/stocks", method = { RequestMethod.GET })
-	public ModelAndView showAllStocks() {
+	public String showAllStocks(Model model) {
 		List<Stock> stocks = stockService.findAll();
-		ModelAndView model = new ModelAndView("showstocks");
-		model.addObject("stocks", stocks);
+		
+		model.addAttribute("stocks", stocks);
 
-		return model;
+		return "showstocks";
 	}
 
 	@GetMapping("/stocks/{stockID}")
@@ -58,7 +59,7 @@ public class StockController {
 		
 		
 		
-		// quantity only works on Chrome!! WHY??
+		
 		Stock stock = stockService.findOne(stockID);
 		stock.setSVolume(stock.getSVolume() + Integer.parseInt(request.getParameter("quantity")));
 		stockService.updateStock(stockID, stock);
