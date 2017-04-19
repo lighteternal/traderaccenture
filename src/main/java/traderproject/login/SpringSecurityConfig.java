@@ -1,5 +1,6 @@
 package traderproject.login;
 
+
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	@Autowired
 	private DataSource authDataSource;
 
-    @Autowired
+    //@Autowired
     public void setDataSource(DataSource dataSource){
         authDataSource = dataSource;
     }
@@ -39,12 +41,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		/****end static*******/
 		
-		auth.jdbcAuthentication()
-        .dataSource(authDataSource)
-        .usersByUsernameQuery(
-                "select username,password, enable_ac from Customers where username=?")
-        .authoritiesByUsernameQuery(
-                "select username,role from user_roles where username=?");
+		auth.jdbcAuthentication().dataSource(authDataSource).usersByUsernameQuery("select username,password, enable_ac from Customers where username=?")
+        .authoritiesByUsernameQuery("select username,role from user_roles where username=?");
 	}
 
 }
