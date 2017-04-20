@@ -38,6 +38,8 @@ public class CustomerService {
 		return customerRepo.findOne(customerId);
 		
 	}
-	
+	public Customer findByUsername(String username){
+		return customerRepo.findByUsername(username);
+	}
 	
 }

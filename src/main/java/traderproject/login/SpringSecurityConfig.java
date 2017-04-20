@@ -14,12 +14,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
+	//@Autowired
 	private DataSource authDataSource;
 
-    //@Autowired
+    @Autowired
     public void setDataSource(DataSource dataSource){
-        authDataSource = dataSource;
+        this.authDataSource = dataSource;
     }
 	
 	

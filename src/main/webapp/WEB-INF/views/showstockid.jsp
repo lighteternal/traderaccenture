@@ -39,6 +39,7 @@
 						Welcome Back <b><c:out
 								value="${pageContext.request.remoteUser}" /></b>
 					</p>
+					<p class="text-right navbar-btn"> Your balance is: <c:out value="${customer.getAccount().getAcBalance()}"></c:out>
 				</div>
 				<div class="col-xs-1 container-paragraph">
 					<form action="/logout" method="post">
