@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page import="java.sql.*"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%
+	ResultSet resultset = null;
+	
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -15,6 +19,9 @@
 <!-- Optional theme -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	
+	<link rel="stylesheet"
+	href="/css/easy-autocomplete.min.css">
 	
 	<style>
 	
@@ -62,14 +69,56 @@ font-size:18px;
 		
 		
 			   <div class="navbar-header">
-				 <a href="#" class="navbar-brand">Accenture Trader</a>			
-			  </div>
-			
+				 <a href="#" class="navbar-brand">Accenture Trader</a>	
+				
+				</div>
+					 
 			<div class="row row-list text-right">
 			    <div class="col-xs-8"> 
 				    <p class="text-right navbar-btn">
 						Welcome : <b><c:out value="${pageContext.request.remoteUser}"/></b>
-					</p></div>
+					</p>
+					
+					 <div class="form-group col-xs-6">
+				  <%
+				try {
+					//Class.forName("com.mysql.jdbc.Driver").newInstance();
+					Connection connection = DriverManager
+							.getConnection("jdbc:mysql://83.212.99.30/Trader?user=manthos&password=man12345");
+		
+					Statement statement = connection.createStatement();
+		
+					resultset = statement.executeQuery("select stockID,sName from Stocks");
+					
+			%>
+		
+			
+				
+				<select id="selectBox" class="form-control" onchange="window.location.href=this.value">
+					<option value="" selected>Select a Stock...</option>
+					<%
+						while (resultset.next()) {
+					%>
+					
+					<option value="/stocks/<%=resultset.getString(1)%>" ><%=resultset.getString(2)%></option>
+					<%
+						}
+					%>
+				</select>
+				
+			
+		
+			<%
+				//**Should I input the codes here?**
+				} catch (Exception e) {
+					out.println("wrong entry" + e);
+				}
+			%> 		
+					  </div>
+					
+					
+					
+					</div>
 			    <div class="col-xs-1 container-paragraph">
 			    	<form action="/logout" method="post">						
 						<button type="submit" class="btn btn-danger navbar-btn login-btn ">Log out</button>
@@ -79,8 +128,11 @@ font-size:18px;
 				</div>
 			</div>  
 					        		
-			        		
 			
+			
+			<input id="example-heroes" placeholder="Heroes" />
+			      
+			     
 		</div>
 	</nav>
 	<div class="btn-group btn-group-justified">
@@ -170,8 +222,12 @@ font-size:18px;
  
 </div>
 	<!-- Latest compiled and minified JavaScript -->
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="/js/stockid.js"></script>
+	<script src="/js/jquery.easy-autocomplete.min.js"></script>
+	<script src="/js/autocomplete.js"></script>
+	
 </body>
 </html>

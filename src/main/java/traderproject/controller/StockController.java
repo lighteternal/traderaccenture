@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+
 import traderproject.model.Stock;
 import traderproject.service.StockService;
 
@@ -29,13 +31,15 @@ public class StockController {
 	private StockService stockService;
 
 	@RequestMapping(value = "/stocks", method = { RequestMethod.GET })
-	public ModelAndView showAllStocks() {
+	public String showAllStocks(Model model) {
 		List<Stock> stocks = stockService.findAll();
-		ModelAndView model = new ModelAndView("showstocks");
-		model.addObject("stocks", stocks);
+		
+		model.addAttribute("stocks", stocks);
+		
 
-		return model;
+		return "showstocks";
 	}
+	
 	
 	@GetMapping("/stocks/{stockID}")
 	public String showStockId(@PathVariable Integer stockID, HttpServletRequest request) {

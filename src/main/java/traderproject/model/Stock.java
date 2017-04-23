@@ -131,13 +131,25 @@ public class Stock implements Serializable {
 		this.sName = sName;
 		this.sSellPrice = sSellPrice;
 		this.sVolume = sVolume;
+		
 	}
 
+	/*
 	@Override
 	public String toString() {
-		return "Stock [stockID=" + stockID + ", sBuyPrice=" + sBuyPrice + ", sClosePrice=" + sClosePrice + ", sDayHigh="
-				+ sDayHigh + ", sDayLow=" + sDayLow + ", sLimitDown=" + sLimitDown + ", sLimitUp=" + sLimitUp
-				+ ", sName=" + sName + ", sSellPrice=" + sSellPrice + ", sVolume=" + sVolume + "]";
+		return "{\"character\": \"Accenture PLC\"}";
+		
 	}
+	*/
+	
+	@Override
+	public String toString() {
+		
+		return "Stock [stockID=" + stockID + ", sBuyPrice=" + sBuyPrice + ", sClosePrice=" + sClosePrice + ", sDayHigh="
+		+ sDayHigh + ", sDayLow=" + sDayLow + ", sLimitDown=" + sLimitDown + ", sLimitUp=" + sLimitUp
+		+ ", sName=" + sName + ", sSellPrice=" + sSellPrice + ", sVolume=" + sVolume + "]";
+	}
+	
+	
 
 }
