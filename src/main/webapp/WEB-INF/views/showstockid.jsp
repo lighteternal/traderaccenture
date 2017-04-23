@@ -68,7 +68,7 @@ font-size:18px;
 			<div class="row row-list text-right">
 			    <div class="col-xs-8"> 
 				    <p class="text-right navbar-btn">
-						Welcome : ${pageContext.request.userPrincipal.name} <b><c:out value="${pageContext.request.remoteUser}"/></b>
+						Welcome : <b><c:out value="${pageContext.request.remoteUser}"/></b>
 					</p></div>
 			    <div class="col-xs-1 container-paragraph">
 			    	<form action="/logout" method="post">						
