@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import traderproject.model.Customer;
+import traderproject.model.Stock;
 import traderproject.repo.CustomerRepo;
 
 @Service
@@ -16,6 +17,11 @@ public class CustomerService {
 
 	public CustomerService(CustomerRepo customerRepo) {
 		this.customerRepo = customerRepo;
+	}
+	
+	public Customer findOne(Integer customerID) {
+
+		return customerRepo.findOne(customerID);
 	}
 
 	public List<Customer> findAll(){

@@ -2,6 +2,7 @@ package traderproject.login;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+@ComponentScan(value="org.webapp")
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -25,9 +27,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login")).and().authorizeRequests()
-				.antMatchers("/stocks/{stockID}").hasRole("USER").and().formLogin().defaultSuccessUrl("/stocks/1")
-				.loginPage("/login").and().logout().permitAll();
+            .antMatchers("/stocks/{stockID}")
+            .authenticated()
+            .and()
+        .formLogin()
+            .defaultSuccessUrl("/stocks/1")
+            .loginPage("/login")
+            .and()
+        .logout()
+            .permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");
+		
 	}
 
 	@Autowired
@@ -44,7 +54,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         .usersByUsernameQuery(
                 "select username,password, enable_ac from Customers where username=?")
         .authoritiesByUsernameQuery(
-                "select username,role from user_roles where username=?");
+                "select username,password, enable_ac from Customers where username=?");
+		
 	}
 
 }
