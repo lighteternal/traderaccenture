@@ -7,6 +7,6 @@
 <title>Order Fail</title>
 </head>
 <body>
-I am sorry ${pageContext.request.remoteUser }, we could not process your request. Perhaps check your balance first?
+Sorry ${pageContext.request.remoteUser }, we could not process your request. Perhaps check your balance first?
 </body>
 </html>

@@ -14,10 +14,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	//@Autowired
+	@Autowired
 	private DataSource authDataSource;
 
-    @Autowired
+    //@Autowired
     public void setDataSource(DataSource dataSource){
         this.authDataSource = dataSource;
     }
@@ -27,7 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login")).and().authorizeRequests()
-				.antMatchers("/stocks/{stockID}").hasRole("USER").and().formLogin().defaultSuccessUrl("/stocks/1")
+				.antMatchers("/stocks").hasRole("USER").antMatchers("/stocks/*").hasRole("USER").and().formLogin().defaultSuccessUrl("/stocks")
 				.loginPage("/login").and().logout().permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");
 	}

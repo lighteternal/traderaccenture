@@ -37,7 +37,12 @@ public class AccountService {
 		accountRepo.delete(id);
 	}
 
-	public void updateAccount(Integer accountId, Account account) {
+	public Account findOne(Integer accountID) {
+
+		return accountRepo.findOne(accountID);
+	}
+
+	public void updateAccount(Integer accountID, Account account) {
 
 		accountRepo.save(account);
 

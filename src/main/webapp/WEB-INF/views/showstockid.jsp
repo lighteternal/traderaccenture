@@ -1,10 +1,7 @@
 <!DOCTYPE HTML>
 <%@ page import="java.sql.*"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%
-	ResultSet resultset = null;
-	
-%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
@@ -39,7 +36,9 @@
 						Welcome Back <b><c:out
 								value="${pageContext.request.remoteUser}" /></b>
 					</p>
-					<p class="text-right navbar-btn"> Your balance is: <c:out value="${customer.getAccount().getAcBalance()}"></c:out>
+					<p class="text-right navbar-btn">
+						Your balance is:
+						<c:out value="${customer.getAccount().getAcBalance()}"></c:out>
 				</div>
 				<div class="col-xs-1 container-paragraph">
 					<form action="/logout" method="post">
@@ -55,41 +54,15 @@
 		</div>
 	</nav>
 	<div>
-	
-	  <%
-		try {
-			//Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection connection = DriverManager
-					.getConnection("jdbc:mysql://localhost/traderdb1?user=root&password=root");
-
-			Statement statement = connection.createStatement();
-
-			resultset = statement.executeQuery("select stockID,sName from Stocks");
-			
-	%>
-
-	
-		
 		<select id="selectBox" onchange="window.location.href=this.value">
 			<option value="" selected>Select a Stock...</option>
-			<%
-				while (resultset.next()) {
-			%>
-			
-			<option value="/stocks/<%=resultset.getString(1)%>"><%=resultset.getString(2)%></option>
-			<%
-				}
-			%>
-		</select>
-		
-	
+			<c:forEach var="stock1" items="${stocks}">
 
-	<%
-		//**Should I input the codes here?**
-		} catch (Exception e) {
-			out.println("wrong entry" + e);
-		}
-	%> </div>
+				<option value="/stocks/${stock1.getStockID()}">${stock1.getSName()}</option>
+			</c:forEach>
+		</select>
+
+	</div>
 	<div class="btn-group btn-group-justified">
 		<a href="#" class="btn btn-primary">Home</a> <a href="#"
 			class="btn btn-primary">New Order</a> <a href="#"

@@ -39,9 +39,9 @@ public class StockController {
 	private AccountService accountService;
 
 	@RequestMapping(value = "/stocks", method = { RequestMethod.GET })
-	public String showAllStocks(Model model) {
+	public String showAllStocks(Model model , HttpServletRequest request) {
 		List<Stock> stocks = stockService.findAll();
-		
+		model.addAttribute("customer", customerService.findByUsername(request.getRemoteUser()));
 		model.addAttribute("stocks", stocks);
 
 		return "showstocks";
@@ -50,7 +50,9 @@ public class StockController {
 	@GetMapping("/stocks/{stockID}")
 	public String showStockId(@PathVariable Integer stockID, HttpServletRequest request) {
 		request.setAttribute("stock", stockService.findOne(stockID));
-		request.setAttribute("customer", customerService.findByUsername(request.getRemoteUser()) );
+		List<Stock> stocks = stockService.findAll();
+		request.setAttribute("stocks", stocks);
+		request.setAttribute("customer", customerService.findByUsername(request.getRemoteUser())) ;
 		return "showstockid";
 	}
 

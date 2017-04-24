@@ -43,4 +43,6 @@ function submitForms() {
 	document.body.innerHTML += '<form id="dynForm" action="/ordered/'+stockid+'" method="post"><input type="hidden" name="quantity" value='+quantity+'><input type="hidden" name="price" value='+price+'><input type="hidden" name="type" value='+type+'><input type="hidden" name="total" value='+total+'></form>';
 	
 	document.getElementById("dynForm").submit();
+	
+	alert("epit");
 }
