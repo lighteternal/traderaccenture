@@ -17,7 +17,7 @@
 <!-- Optional theme -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-
+<link rel="stylesheet" href="/css/easy-autocomplete.min.css">
 <style>
 .footer {
 	color: #fff;
@@ -57,7 +57,7 @@ td {
 					<div class="navbar-header">
 
 
-						<a href="#" class="navbar-brand">Accenture Trader</a>
+						<a href="/stocks" class="navbar-brand">Accenture Trader</a>
 					</div>
 
 					<div class="row row-list text-right">
@@ -94,8 +94,8 @@ td {
 
 			</div>
 			<div class="btn-group btn-group-justified">
-				<a href="#" class="btn btn-primary">Home</a> <a href="#"
-					class="btn btn-primary">New Order</a> <a href="#"
+				<a href="/stocks" class="btn btn-primary">Home</a> <a href="/stocks"
+					class="btn btn-primary">New Order</a> <a href="/act"
 					class="btn btn-primary">Trades View</a><a href="#"
 					class="btn btn-primary">Portfolio</a>
 			</div>
@@ -134,8 +134,8 @@ td {
 							</form>
 						</div>
 						<div class="col-md-6">
-							<h3 style="text-align: center">Order Price</h3>
-							<div id="orderprice"></div>
+							<h3 style="text-align: center">Order Price
+							<div id="orderprice"></div></h3>
 							<hr>
 							<div class="boxed">
 								<h3 style="text-align: center">

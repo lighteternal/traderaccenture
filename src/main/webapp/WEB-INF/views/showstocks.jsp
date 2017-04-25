@@ -65,10 +65,11 @@
 
 	</div>
 	<div class="btn-group btn-group-justified">
-		<a href="#" class="btn btn-primary">Home</a> <a href="#"
-			class="btn btn-primary">New Order</a> <a href="#"
+		<a href="/stocks" class="btn btn-primary">Home</a> <a href="/stocks"
+			class="btn btn-primary">New Order</a> <a href="/act"
 			class="btn btn-primary">Trades View</a><a href="#"
 			class="btn btn-primary">Portfolio</a>
 	</div>
+	
 </body>
 </html>

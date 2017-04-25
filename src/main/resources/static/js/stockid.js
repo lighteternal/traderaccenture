@@ -44,6 +44,6 @@ function submitForms() {
 	
 	document.getElementById("dynForm").submit();
 	
-	//alert("epit");
+	
 }
 
