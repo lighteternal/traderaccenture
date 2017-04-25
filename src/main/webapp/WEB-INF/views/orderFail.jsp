@@ -7,6 +7,12 @@
 <title>Order Fail</title>
 </head>
 <body>
-Sorry ${pageContext.request.remoteUser }, we could not process your request. Perhaps check your balance first?
+<script>
+    window.onload = function() {
+       alert("Sorry ${pageContext.request.remoteUser }, we could not process your request. Perhaps check your balance first?");
+       window.location.href = "/stocks"
+    }
+</script>
+
 </body>
 </html>

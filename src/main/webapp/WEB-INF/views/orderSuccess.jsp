@@ -7,6 +7,11 @@
 <title>Order Successful</title>
 </head>
 <body>
-Your order was successful.
+<script>
+    window.onload = function() {
+       alert("Your order was successful.");
+       window.location.href = "/stocks"
+    }
+</script>
 </body>
 </html>
