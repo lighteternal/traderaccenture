@@ -27,7 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login")).and().authorizeRequests()
-				.antMatchers("/stocks").hasRole("USER").antMatchers("/stocks/*").hasRole("USER").and().formLogin().defaultSuccessUrl("/stocks")
+				.antMatchers("/stocks").authenticated().antMatchers("/stocks/*").authenticated().antMatchers("/act").authenticated().and().formLogin().defaultSuccessUrl("/stocks")
 				.loginPage("/login").and().logout().permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");
 	}
@@ -42,7 +42,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		/****end static*******/
 		
 		auth.jdbcAuthentication().dataSource(authDataSource).usersByUsernameQuery("select username,password, enable_ac from Customers where username=?")
-        .authoritiesByUsernameQuery("select username,role from user_roles where username=?");
+        .authoritiesByUsernameQuery("select username,password,enable_ac from Customers where username=?");
 	}
 
 }

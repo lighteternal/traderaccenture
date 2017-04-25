@@ -19,7 +19,6 @@ public class CustomerController {
 		return "login";
 	}
 
-	
 	@GetMapping("/save")
 	public String saveCustomer(@RequestParam String firstName,@RequestParam String lastName, @RequestParam String username,
 			@RequestParam String password){

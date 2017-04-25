@@ -13,7 +13,7 @@ function setBuy(){
 	fees =  (0.005*price);
 	document.getElementById("fees").innerHTML = ((0.005*price).toFixed(2)+"EUR");
 	
-	document.getElementById("test").innerHTML = ((price+fees).toFixed(2));
+	document.getElementById("orderprice").innerHTML = ((price+fees).toFixed(2));
 	type=0;
 }
 
@@ -25,7 +25,7 @@ function setSell(){
 	fees =  (0.005*price+3);
 	document.getElementById("fees").innerHTML = ((0.005*price+3).toFixed(2)+"EUR");
 	
-	document.getElementById("test").innerHTML = ((price+fees).toFixed(2));
+	document.getElementById("orderprice").innerHTML = ((price+fees).toFixed(2));
 	type=1;
 }
 
@@ -33,7 +33,7 @@ function addQuantity(){
 	quantity = Number(document.getElementById("quantity").value);
 	
 	total = quantity*(price+fees).toFixed(2);
-	document.getElementById("test").innerHTML = total;
+	document.getElementById("orderprice").innerHTML = total;
 }
 
 function submitForms() {
@@ -46,3 +46,4 @@ function submitForms() {
 	
 	//alert("epit");
 }
+
