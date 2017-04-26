@@ -1,6 +1,6 @@
 $(document).ready( function () {
 	 var table = $('#activitiesTable').DataTable({
-		 "sAjaxSource": "activities",
+		 "sAjaxSource": "/activ",
 			"sAjaxDataProp": "",
 			"order": [[ 0, "asc" ]],
 			"aoColumns": [
