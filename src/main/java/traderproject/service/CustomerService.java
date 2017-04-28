@@ -11,35 +11,40 @@ import traderproject.repo.CustomerRepo;
 @Service
 @Transactional
 public class CustomerService {
-	
+
 	private final CustomerRepo customerRepo;
 
 	public CustomerService(CustomerRepo customerRepo) {
 		this.customerRepo = customerRepo;
 	}
 
-	public List<Customer> findAll(){
-		List<Customer> customers=new ArrayList<>();
-		for ( Customer customer:customerRepo.findAll() ){
+	public List<Customer> findAll() {
+		List<Customer> customers = new ArrayList<>();
+		for (Customer customer : customerRepo.findAll()) {
 			customers.add(customer);
 		}
 		return customers;
 	}
-	
-	public void save(Customer customer){
+
+	public void save(Customer customer) {
 		customerRepo.save(customer);
 	}
-	
-	public void delete(int id){
+
+	public void delete(int id) {
 		customerRepo.delete(id);
 	}
-	
+
 	public Customer findOne(int customerId) {
 		return customerRepo.findOne(customerId);
-		
+
 	}
-	public Customer findByUsername(String username){
+
+	public Customer findByUsername(String username) {
 		return customerRepo.findByUsername(username);
 	}
-	
+
+	public void updateCustomer(Integer customerID, Customer customer) {
+		customerRepo.save(customer);
+	}
+
 }

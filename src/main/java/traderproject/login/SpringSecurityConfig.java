@@ -27,7 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.csrf().requireCsrfProtectionMatcher(new AntPathRequestMatcher("**/login")).and().authorizeRequests()
-				.antMatchers("/stocks").authenticated().antMatchers("/stocks/*").authenticated().antMatchers("/act").authenticated().and().formLogin().defaultSuccessUrl("/stocks")
+				.antMatchers("/stocks").authenticated().antMatchers("/stocks/*").authenticated().antMatchers("/act").authenticated().antMatchers("/editaccount").authenticated().and().formLogin().defaultSuccessUrl("/stocks")
 				.loginPage("/login").and().logout().permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");
 	}
