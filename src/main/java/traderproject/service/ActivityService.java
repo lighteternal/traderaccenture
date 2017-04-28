@@ -51,8 +51,8 @@ public class ActivityService {
 
 	}
 
-	public List<Activity> findbyCustomerId(int customerID) {
-		Customer cust = customerRepo.findOne(customerID);
+	public List<Activity> findbyCustomerName(String username) {
+		Customer cust = customerRepo.findByUsername(username);
 		List<Activity> activ = cust.getAccount().getActivities();
 		return activ;
 	}
