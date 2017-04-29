@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <%@ page import="java.sql.*"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -19,22 +21,9 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="/css/easy-autocomplete.min.css">
 <style>
-.footer {
-	color: #fff;
-	line-height: 59px;
-	background-color: #000;
-	border-top: 1px solid #fff;
-}
-
-.content {
-	position: relative;
-	margin-bottom: 30em;
-}
-
 body {
 	padding: 0;
 	margin: 0;
-	font-family: 'Open Sans', 'Trebuchet MS', arial, sans-serif;
 	font-size: 13px;
 }
 
@@ -53,46 +42,51 @@ td {
 
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
+					<div class="row row-list">
+						<div class="col-md-3 navbar-header">
 
-					<div class="navbar-header">
+
+							<a href="/stocks" class="navbar-brand">Accenture Trader</a>
+						</div>
 
 
-						<a href="/stocks" class="navbar-brand">Accenture Trader</a>
-					</div>
-
-					<div class="row row-list text-right">
-						<div class="col-xs-8">
-							<p class="text-right navbar-btn">
+						<div class="col-md-8 text-right ">
+							<p style="margin-top: 10px;">
 								Welcome : <b><c:out
 										value="${pageContext.request.remoteUser}" /></b>
 							</p>
-							<p class="text-right navbar-btn">
+							<p>
 								Your balance is:
-								<c:out value="${customer.getAccount().getAcBalance()}"></c:out>
+								<fmt:formatNumber type="number" maxFractionDigits="2"
+									value="${customer.getAccount().getAcBalance()}"
+									var="newBalance" />
+
+								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>EUR
 						</div>
-						<div class="col-xs-1 container-paragraph">
+						<div class="col-md-1 container-paragraph">
 							<form action="/logout" method="post">
 								<button type="submit"
-									class="btn btn-danger navbar-btn login-btn ">Log out</button>
+									class="btn btn-danger navbar-btn login-btn btn-responsive ">Log
+									out</button>
 								<input type="hidden" name="${_csrf.parameterName}"
 									value="${_csrf.token}" />
 							</form>
 						</div>
 					</div>
+					<div class="row" style="margin-left: 1px;">
+						<select id="selectBox" onchange="window.location.href=this.value">
+							<option value="" selected>Select a Stock...</option>
+							<c:forEach var="stock1" items="${stocks}">
 
-					<input id="example-heroes" placeholder="Heroes" />
+								<option value="/stocks/${stock1.getStockID()}">${stock1.getSName()}</option>
+							</c:forEach>
+						</select>
+
+					</div>
+					<!-- <input id="example-heroes" placeholder="Heroes" /> -->
 				</div>
 			</nav>
-			<div>
-				<select id="selectBox" onchange="window.location.href=this.value">
-					<option value="" selected>Select a Stock...</option>
-					<c:forEach var="stock1" items="${stocks}">
 
-						<option value="/stocks/${stock1.getStockID()}">${stock1.getSName()}</option>
-					</c:forEach>
-				</select>
-
-			</div>
 			<div class="btn-group btn-group-justified">
 				<a href="/stocks" class="btn btn-primary">Home</a> <a href="/stocks"
 					class="btn btn-primary">New Order</a> <a href="/act"
@@ -127,7 +121,7 @@ td {
 								<div class="form-group">
 									<input type="text" name="quantity" class="form-control"
 										placeholder="put quantity" id="quantity"
-										onblur="addQuantity()">
+										onkeyup="addQuantity()">
 									<!-- <br> -->
 									<!-- <button type="button_quantity" class="btn btn-default">Ok</button> -->
 								</div>
@@ -135,8 +129,10 @@ td {
 							</form>
 						</div>
 						<div class="col-md-6">
-							<h3 style="text-align: center">Order Price
-							<div id="orderprice"></div></h3>
+							<h3 style="text-align: center">
+								Order Price
+								<div id="orderprice"></div>
+							</h3>
 							<hr>
 							<div class="boxed">
 								<h3 style="text-align: center">
@@ -185,8 +181,8 @@ td {
 		<!-- /.container -->
 
 		<footer class="footer">
-			<div class="container-fluid">
-				<p class="pull-left">Copyright 2017 Trader</p>
+			<div>
+				<p class="text-center" style="margin:0 0 0 0px;">Copyright 2017 Trader</p>
 			</div>
 		</footer>
 

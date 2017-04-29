@@ -12,3 +12,18 @@
 	visibility: hidden;
 	
 }
+
+/* taken from manthos's commit
+ */
+ .footer {
+	color: #fff;
+	line-height: 59px;
+	background-color: #000;
+	border-top: 1px solid #fff;
+}
+
+.content {
+	position: relative;
+	margin-bottom: 30em;
+}
+
