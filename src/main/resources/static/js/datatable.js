@@ -7,7 +7,7 @@ $(document).ready( function () {
 			    { "mData": "txID"},
 		      { "mData": "creationDate"   },
 				  { "mData": "stockAmount" },
-				  { "mData": "stockID" },
+				  { "mData": "sname" },
 				  { "mData": "stockPrice" },
 				  { "mData": "type" }
 			]

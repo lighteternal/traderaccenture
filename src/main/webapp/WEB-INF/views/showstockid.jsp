@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <%@ page import="java.sql.*"%>
+
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -68,7 +69,7 @@ td {
 							</p>
 							<p class="text-right navbar-btn">
 								Your balance is:
-								<c:out value="${customer.getAccount().getAcBalance()}"></c:out>
+								<c:out value="${customer.getAccount().getAcBalance()}"></c:out>&#8364;
 						</div>
 						<div class="col-xs-1 container-paragraph">
 							<form action="/logout" method="post">

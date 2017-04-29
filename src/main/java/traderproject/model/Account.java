@@ -32,20 +32,15 @@ public class Account implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int accountID;
-
-	private double acBalance;
-	
+	private double acBalance;	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date acDateCreated;
-
 	private int customerID;
-
 	//bi-directional one-to-one association to Customer
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="accountID", nullable=true)
 	@JsonBackReference
 	private Customer customer;
-
 	//bi-directional many-to-one association to Activity
 	@OneToMany(mappedBy="account", fetch=FetchType.EAGER)
 	@JsonBackReference

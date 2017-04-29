@@ -67,8 +67,8 @@
 				<th>Id</th>
 				<th>CreationDate</th>
 				<th>Amount</th>
-				<th>StockID</th>
-				<th>StockPrice</th>
+				<th>Stock</th>
+				<th>Price (&#8364;)</th>
 				<th>ActivityType</th>
 			</tr>
 		</thead>
@@ -78,8 +78,8 @@
 				<th>Id</th>
 				<th>CreationDate</th>
 				<th>Amount</th>
-				<th>StockID</th>
-				<th>StockPrice</th>
+				<th>Stock</th>
+				<th>Price (&#8364;)</th>
 				<th>ActivityType</th>
 			</tr>
 		</tfoot>

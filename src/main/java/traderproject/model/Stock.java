@@ -3,6 +3,9 @@ package traderproject.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * The persistent class for the Stocks database table.
@@ -10,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity(name="Stocks")
 @Table(name="Stocks")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "stockID")
 public class Stock implements Serializable {
 	private static final long serialVersionUID = 1L;
 
