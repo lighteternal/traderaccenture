@@ -63,7 +63,7 @@
                                 </p>
                                 <p> 
                                     <label for="birthday" class="birthday" data-icon="p">Birthday: </label>
-                                    <form:input id="birthday" path="birthday" placeholder=" (mm/dd/yyyy)"/>
+                                    <form:input id="birthday" path="birthday" required="required" placeholder=" (mm/dd/yyyy)"/>
                                 </p>
                                 <p class="signin button"> 
 									<input type="submit" value="Sign up"/> 
