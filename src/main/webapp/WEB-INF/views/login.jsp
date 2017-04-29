@@ -84,7 +84,7 @@ body {
 								<input type="submit" value="Login" />
 							</p>
 							<p class="change_link">
-								Not a member yet ? <a href="#toregister" class="to_register">Join
+								Not a member yet ? <a href="/register" class="to_register">Join
 									us</a>
 							</p>
 

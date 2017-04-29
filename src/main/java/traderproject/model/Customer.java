@@ -70,6 +70,15 @@ public class Customer implements Serializable {
 		}
 		
 		public Customer(){}
+		
+		public Customer(String username,String password, String email, Date birthday) {
+			super();
+		
+			this.password = password;
+			this.username = username;
+			this.birthday = birthday;
+			this.email = email;
+		}
 
 	
 	//GETTERS AND SETTERS

@@ -119,7 +119,15 @@ public class Account implements Serializable {
 		this.customer = customer;
 		this.activities = activities;
 	}
-
+	
+	public Account(int accountID, double acBalance,Date acDateCreated, int customerID) {
+		super();
+		this.acBalance = acBalance;
+		this.acDateCreated = acDateCreated;
+		this.customerID = customerID;
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "Account [accountID=" + accountID + ", acBalance=" + acBalance + ", acDateCreated=" + acDateCreated
