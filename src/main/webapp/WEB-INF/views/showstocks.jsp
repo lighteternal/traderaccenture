@@ -38,8 +38,30 @@ body {
 						<div class="col-md-3 navbar-header">
 
 
+<<<<<<< HEAD
 							<a href="/stocks" class="navbar-brand">Accenture Trader</a>
 						</div>
+=======
+			<div class="row row-list text-right">
+				<div class="col-xs-8">
+					<p class="text-right navbar-btn">
+						Welcome Back <b><c:out
+								value="${pageContext.request.remoteUser}" /></b>
+					</p>
+					<p class="text-right navbar-btn">
+						Your balance is:
+						<c:out value="${customer.getAccount().getAcBalance()}"></c:out>&#8364;
+				</div>
+				<div class="col-xs-1 container-paragraph">
+					<form action="/logout" method="post">
+						<button type="submit" class="btn btn-danger navbar-btn login-btn ">Log
+							out</button>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+					</form>
+				</div>
+			</div>
+>>>>>>> 979b912b8e002ad6a9d29d5735d8ed25111b2285
 
 
 						<div class="col-md-8 text-right ">
@@ -53,7 +75,7 @@ body {
 									value="${customer.getAccount().getAcBalance()}"
 									var="newBalance" />
 
-								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>EUR
+								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>&#8364;
 						</div>
 						<div class="col-md-1 container-paragraph">
 							<form action="/logout" method="post">

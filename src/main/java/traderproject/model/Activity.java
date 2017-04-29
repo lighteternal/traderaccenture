@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -39,8 +40,8 @@ public class Activity implements Serializable {
 	private Date creationDate;
 	@Column(name="stockAmount")
 	private int stockAmount;
-	@Column(name="stockID")
-	private int stockID;
+	@Column(name="sName")
+	private String sName;
 	@Column(name="stockPrice")
 	private double stockPrice;
 	@Column(name="type")
@@ -49,7 +50,7 @@ public class Activity implements Serializable {
 	//bi-directional many-to-one association to Account
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="accountID", nullable=true)
-	@JsonManagedReference
+	@JsonBackReference
 	private Account account;
 
 	public Activity() {
@@ -79,12 +80,12 @@ public class Activity implements Serializable {
 		this.stockAmount = stockAmount;
 	}
 
-	public int getStockID() {
-		return this.stockID;
+	public String getSName() {
+		return this.sName;
 	}
 
-	public void setStockID(int stockID) {
-		this.stockID = stockID;
+	public void setSName(String sName) {
+		this.sName = sName;
 	}
 
 	public double getStockPrice() {
@@ -111,13 +112,13 @@ public class Activity implements Serializable {
 		this.account = account;
 	}
 
-	public Activity(Date creationDate, int stockAmount, int stockID, double stockPrice, String type,
+	public Activity(Date creationDate, int stockAmount, String sName, double stockPrice, String type,
 			Account account) {
 		
 		
 		this.creationDate = creationDate;
 		this.stockAmount = stockAmount;
-		this.stockID = stockID;
+		this.sName = sName;
 		this.stockPrice = stockPrice;
 		this.type = type;
 		this.account = account;

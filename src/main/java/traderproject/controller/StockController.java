@@ -79,8 +79,8 @@ public class StockController {
 		stockService.updateStock(stockID, stock);
 
 		Date currentDate = new Date();
-
-		Activity activity = new Activity(currentDate, Integer.parseInt(request.getParameter("quantity")), stockID,
+System.out.println(stock.getSName());
+		Activity activity = new Activity(currentDate, Integer.parseInt(request.getParameter("quantity")),stock.getSName(),
 				Double.parseDouble(request.getParameter("price")), request.getParameter("type"), account);
 		activityService.save(activity);
 

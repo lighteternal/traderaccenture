@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <%@ page import="java.sql.*"%>
+
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -57,11 +58,15 @@ td {
 							</p>
 							<p>
 								Your balance is:
+<<<<<<< HEAD
 								<fmt:formatNumber type="number" maxFractionDigits="2"
 									value="${customer.getAccount().getAcBalance()}"
 									var="newBalance" />
 
-								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>EUR
+								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>&#8364;
+=======
+								<c:out value="${customer.getAccount().getAcBalance()}"></c:out>&#8364;
+>>>>>>> 979b912b8e002ad6a9d29d5735d8ed25111b2285
 						</div>
 						<div class="col-md-1 container-paragraph">
 							<form action="/logout" method="post">
