@@ -129,6 +129,7 @@ td {
 										placeholder="put quantity" id="quantity"
 										onblur="addQuantity()">
 									<!-- <br> -->
+									<!-- <button type="button_quantity" class="btn btn-default">Ok</button> -->
 								</div>
 
 							</form>

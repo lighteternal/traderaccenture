@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -49,6 +50,7 @@ public class Customer implements Serializable {
 
 	//bi-directional one-to-one association to Account
 	@OneToOne(mappedBy="customer")
+	@JsonBackReference
 	private Account account;
 
 	//bi-directional many-to-one association to Portfolio

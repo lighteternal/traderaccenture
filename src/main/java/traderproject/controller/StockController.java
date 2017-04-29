@@ -61,7 +61,7 @@ public class StockController {
 		Account account = customer.getAccount();
 
 		// changed accountid to not unique, add restraint if balance>0
-		if (Integer.parseInt(request.getParameter("type")) == 0) { // buy
+		if ((request.getParameter("type")).equals("BUY")) { // buy
 			account.setAcBalance(account.getAcBalance() - Double.parseDouble(request.getParameter("total")));
 			if ((account.getAcBalance()) <= 0) {
 
@@ -78,13 +78,10 @@ public class StockController {
 		stock.setSVolume(stock.getSVolume() + Integer.parseInt(request.getParameter("quantity")));
 		stockService.updateStock(stockID, stock);
 
-		// get buy/sell price for one unit TYPE is either 0 or 1 for buy/sell .
-		// Define it yourself
 		Date currentDate = new Date();
 
 		Activity activity = new Activity(currentDate, Integer.parseInt(request.getParameter("quantity")), stockID,
-				Double.parseDouble(request.getParameter("price")),
-				(byte) Integer.parseInt(request.getParameter("type"), 2), account);
+				Double.parseDouble(request.getParameter("price")), request.getParameter("type"), account);
 		activityService.save(activity);
 
 		return new ModelAndView("orderSuccess");

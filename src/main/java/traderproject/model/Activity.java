@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
@@ -43,11 +44,12 @@ public class Activity implements Serializable {
 	@Column(name="stockPrice")
 	private double stockPrice;
 	@Column(name="type")
-	private byte type;
+	private String type;
 
 	//bi-directional many-to-one association to Account
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="accountID", nullable=true)
+	@JsonManagedReference
 	private Account account;
 
 	public Activity() {
@@ -93,11 +95,11 @@ public class Activity implements Serializable {
 		this.stockPrice = stockPrice;
 	}
 
-	public byte getType() {
+	public String getType() {
 		return this.type;
 	}
 
-	public void setType(byte type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -109,7 +111,7 @@ public class Activity implements Serializable {
 		this.account = account;
 	}
 
-	public Activity(Date creationDate, int stockAmount, int stockID, double stockPrice, byte type,
+	public Activity(Date creationDate, int stockAmount, int stockID, double stockPrice, String type,
 			Account account) {
 		
 		

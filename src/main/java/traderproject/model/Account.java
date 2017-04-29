@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -42,10 +43,12 @@ public class Account implements Serializable {
 	//bi-directional one-to-one association to Customer
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="accountID", nullable=true)
+	@JsonBackReference
 	private Customer customer;
 
 	//bi-directional many-to-one association to Activity
 	@OneToMany(mappedBy="account", fetch=FetchType.EAGER)
+	@JsonBackReference
 	private List<Activity> activities;
 
 	public Account() {

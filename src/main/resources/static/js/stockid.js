@@ -1,6 +1,6 @@
 var price = "";
 var fees = "";
-var type =""; //0 for buy, 1 for sell
+var type =""; 
 var total="";
 var quantity="";
 var stockid="";
@@ -14,7 +14,7 @@ function setBuy(){
 	document.getElementById("fees").innerHTML = ((0.005*price).toFixed(2)+"EUR");
 	
 	document.getElementById("orderprice").innerHTML = ((price+fees).toFixed(2));
-	type=0;
+	type="BUY";
 }
 
 function setSell(){
@@ -26,7 +26,7 @@ function setSell(){
 	document.getElementById("fees").innerHTML = ((0.005*price+3).toFixed(2)+"EUR");
 	
 	document.getElementById("orderprice").innerHTML = ((price+fees).toFixed(2));
-	type=1;
+	type="SELL";
 }
 
 function addQuantity(){
