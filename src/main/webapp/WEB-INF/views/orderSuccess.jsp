@@ -10,7 +10,7 @@
 <script>
     window.onload = function() {
        alert("Your order was successful.");
-       window.location.href = "/stocks"
+       window.location.href = "/act"
     }
 </script>
 </body>

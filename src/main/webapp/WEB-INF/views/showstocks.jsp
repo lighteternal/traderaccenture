@@ -68,7 +68,7 @@ body {
 					</div>
 				</div>
 				<div class="row" style="margin-left: 1px;">
-					<p>Please select a stock from the dropdown menu.</p>
+					<h4>Please select a stock from the dropdown menu.</h4>
 					<select id="selectBox" onchange="window.location.href=this.value">
 						<option value="" selected>Select a Stock...</option>
 						<c:forEach var="stock1" items="${stocks}">

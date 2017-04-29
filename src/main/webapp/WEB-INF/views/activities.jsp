@@ -44,52 +44,50 @@ td {
 <body>
 
 	<div id="wrapper">
-		
-
-			<nav class="navbar navbar-default">
-				<div class="container-fluid">
-					<div class="row row-list">
-						<div class="col-md-3 navbar-header">
 
 
-							<a href="/stocks" class="navbar-brand">Accenture Trader</a>
-						</div>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="row row-list">
+					<div class="col-md-3 navbar-header">
 
 
-						<div class="col-md-8 text-right ">
-							<p style="margin-top: 10px;">
-								Welcome : <b><c:out
-										value="${pageContext.request.remoteUser}" /></b>
-							</p>
-							<p>
-								Your balance is:
+						<a href="/stocks" class="navbar-brand">Accenture Trader</a>
+					</div>
 
-								<fmt:formatNumber type="number" maxFractionDigits="2"
-									value="${customer.getAccount().getAcBalance()}"
-									var="newBalance" />
 
-								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>
-								&#8364;
-						</div>
-						<div class="col-md-1 container-paragraph">
-							<form action="/logout" method="post">
-								<button type="submit"
-									class="btn btn-danger navbar-btn login-btn btn-responsive ">Log
-									out</button>
-								<input type="hidden" name="${_csrf.parameterName}"
-									value="${_csrf.token}" />
-							</form>
-						</div>
+					<div class="col-md-8 text-right ">
+						<p style="margin-top: 10px;">
+							Welcome : <b><c:out value="${pageContext.request.remoteUser}" /></b>
+						</p>
+						<p>
+							Your balance is:
+
+							<fmt:formatNumber type="number" maxFractionDigits="2"
+								value="${customer.getAccount().getAcBalance()}" var="newBalance" />
+
+							<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>
+							&#8364;
+					</div>
+					<div class="col-md-1 container-paragraph">
+						<form action="/logout" method="post">
+							<button type="submit"
+								class="btn btn-danger navbar-btn login-btn btn-responsive ">Log
+								out</button>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
+						</form>
 					</div>
 				</div>
-			</nav>
-			<div class="btn-group btn-group-justified">
-				<a href="/stocks" class="btn btn-primary">Home</a> <a href="/stocks"
-					class="btn btn-primary">New Order</a> <a href="/act"
-					class="btn btn-primary">Trades View</a><a href="#"
-					class="btn btn-primary">Portfolio</a>
 			</div>
+		</nav>
+		<div class="btn-group btn-group-justified">
+			<a href="/stocks" class="btn btn-primary">Home</a> <a href="/stocks"
+				class="btn btn-primary">New Order</a> <a href="/act"
+				class="btn btn-primary">Trades View</a><a href="#"
+				class="btn btn-primary">Portfolio</a>
 		</div>
+	</div>
 
 	<h1>Trades view</h1>
 
@@ -118,6 +116,11 @@ td {
 			</tr>
 		</tfoot>
 	</table>
-
+	<footer class="footer">
+		<div>
+			<p class="text-center" style="margin: 0 0 0 0px;">Copyright 2017
+				Trader</p>
+		</div>
+	</footer>
 </body>
 </html>
