@@ -58,15 +58,13 @@ td {
 							</p>
 							<p>
 								Your balance is:
-<<<<<<< HEAD
+
 								<fmt:formatNumber type="number" maxFractionDigits="2"
 									value="${customer.getAccount().getAcBalance()}"
 									var="newBalance" />
 
-								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>&#8364;
-=======
-								<c:out value="${customer.getAccount().getAcBalance()}"></c:out>&#8364;
->>>>>>> 979b912b8e002ad6a9d29d5735d8ed25111b2285
+								<c:out value="${fn:replace(newBalance, ',', '.')}"></c:out>
+								&#8364;
 						</div>
 						<div class="col-md-1 container-paragraph">
 							<form action="/logout" method="post">
@@ -187,7 +185,8 @@ td {
 
 		<footer class="footer">
 			<div>
-				<p class="text-center" style="margin:0 0 0 0px;">Copyright 2017 Trader</p>
+				<p class="text-center" style="margin: 0 0 0 0px;">Copyright 2017
+					Trader</p>
 			</div>
 		</footer>
 
