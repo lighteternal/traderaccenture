@@ -47,8 +47,6 @@
                     <div id="wrapper">
                         <div id="login" class="animate form">
                         
-                   
-					
                             <form:form action="register" method="post" commandName="userForm">
                                 <h1> Sign up </h1> 
                                 <p> 

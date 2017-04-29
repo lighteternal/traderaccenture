@@ -49,7 +49,15 @@ body {
 
 				<c:if test="${param.error ne null}">
 					<div style="color: red">Invalid credentials.</div>
+					
+					
 				</c:if>
+				
+				<c:out value="${msg}" escapeXml="false">${msg}</c:out>
+				
+				<c:out value="${success}" escapeXml="false">${success}</c:out>
+				
+				
 			</nav>
 		</header>
 		<section>
